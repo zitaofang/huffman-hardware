@@ -1,0 +1,82 @@
+# Specify Global Variables
+dot.clockPeriod: &CLK_PERIOD "0.8ns"
+dot.verilogSrc: &VERILOG_SRC
+  - "src/top.v"
+  - "src/memcell.v"
+  # Add more source files here if you like
+
+# Specify clock signals
+vlsi.inputs.clocks: [
+  {name: "clock", period: *CLK_PERIOD, uncertainty: "0.1ns"}
+]
+
+# If you want to syn/par a different module, replace synthesis.inputs.top_module
+
+# Synthesis Constraints
+synthesis.inputs:
+  top_module: "Top"
+  input_files: *VERILOG_SRC
+
+# Placement Constraints
+vlsi.inputs.placement_constraints:
+  - path: "Top"
+    type: toplevel
+    x: 0
+    y: 0
+    width:  190
+    height: 260
+    margins:
+      left:   0
+      right:  0
+      top:    0
+      bottom: 0
+
+  - path: "Top/table_/MemCell/ram"
+    type: hardmacro
+    x: 10
+    y: 95
+    orientation: my
+  - path: "Top/table_/MemCell_1/ram"
+    type: hardmacro
+    x: 55
+    y: 95
+    orientation: my
+  - path: "Top/table_/MemCell_2/ram"
+    type: hardmacro
+    x: 100
+    y: 95
+    orientation: r0
+  - path: "Top/table_/MemCell_3/ram"
+    type: hardmacro
+    x: 145
+    y: 95
+    orientation: r0
+  - path: "Top/order_table/MemCellSmall/ram"
+    type: hardmacro
+    x: 10
+    y: 20
+    orientation: my
+  - path: "Top/order_table/MemCellSmall_1/ram"
+    type: hardmacro
+    x: 160
+    y: 20
+    orientation: r0
+  - path: "Top/place_obs_bottom"
+    type: obstruction
+    obs_types: ["place"]
+    x: 0
+    y: 0
+    width: 200
+    height: 1.08 # 1 core site tall, necessary to avoid shorts
+
+# Pin placement constraints
+vlsi.inputs.pin_mode: generated
+vlsi.inputs.pin.generate_mode: semi_auto
+vlsi.inputs.pin.assignments: [
+  {pins: "*", layers: ["M5", "M7"], side: "bottom"}
+]
+
+# SRAMs seem to cause these cells to fail legalization during CTS.
+# Illegal placement causes incomplete clock tree -> fails sim
+vlsi.inputs.dont_use_mode: "append"
+vlsi.inputs.dont_use_list: ["BUFx16f_ASAP7_75t_R", "BUFx16f_ASAP7_75t_L", "BUFx16f_ASAP7_75t_SL", "BUFx16f_ASAP7_75t_SRAM"]
