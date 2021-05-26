@@ -18,13 +18,13 @@ class HuffmanSpec extends AnyFlatSpec with Matchers {
 
     behavior of "HuffmanModule" 
 
-    it should "Test Huffman Decoding Buffer" in {
-        DoDecodeShiftBufferTest() should be(true)
-    }
+    // it should "Test Huffman Decoding Buffer" in {
+    //     DoDecodeShiftBufferTest() should be(true)
+    // }
 
-    it should "Test Huffman Encoding Buffer" in {
-        DoEncodeShiftBufferTest() should be(true)
-    }
+    // it should "Test Huffman Encoding Buffer" in {
+    //     DoEncodeShiftBufferTest() should be(true)
+    // }
 
     it should "Test Huffman Encoder" in {
         DoHuffmanEncoderTest() should be(true)

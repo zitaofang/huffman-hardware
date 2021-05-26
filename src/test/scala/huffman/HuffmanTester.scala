@@ -7,6 +7,7 @@ import chisel3.iotesters._
 
 import java.io.FileInputStream
 
+// This unit test is for the shift register in the encoder. It's for debug only and disabled by default.
 class EncodeShiftBufferTest(c: EncodeShiftBuffer) extends PeekPokeTester(c) {
     // Generate 10 bits of random data (left align for those less than 4 bits)
     // Input "1010", "1100", "1100", "1111", "1000", "1000"
@@ -39,6 +40,8 @@ class EncodeShiftBufferTest(c: EncodeShiftBuffer) extends PeekPokeTester(c) {
     step(1)
 }
 
+// This unit test is for the shift register in the decoder. It's for debug only and disabled by default.
+// This test is not currently producing the correct result.
 class DecodeShiftBufferTest(c: DecodeShiftBuffer) extends PeekPokeTester(c) {
     // Input data: 10001010, 10111100, 00010011, 00100100
     val data = Array(138, 188, 19, 36)

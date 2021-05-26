@@ -113,13 +113,13 @@ module huffman_tb;
             compressed.ram[k] = 0;
             source.ram[k] = 0;
         end
-        fd = $fopen("../build/table.dat", "rb");
+        fd = $fopen("../data/table.dat", "rb");
         $fread(table, fd);
         $fclose(fd);
-        fd = $fopen("../build/ref_data.dat", "rb");
+        fd = $fopen("../data/ref_data.dat", "rb");
         $fread(compressed.ram, fd);
         $fclose(fd);
-        fd = $fopen("../build/sample_data.txt", "rb");
+        fd = $fopen("../data/sample_data.txt", "rb");
         $fread(source.ram, fd);
         $fclose(fd);
 

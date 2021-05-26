@@ -1,8 +1,8 @@
 # Specify Global Variables
 dot.clockPeriod: &CLK_PERIOD "0.8ns"
 dot.verilogSrc: &VERILOG_SRC
-  - "src/top.v"
-  - "src/memcell.v"
+  - "verilog/Top.v"
+  - "verilog/memcell.v"
   # Add more source files here if you like
 
 # Specify clock signals
