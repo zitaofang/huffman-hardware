@@ -25,7 +25,9 @@ g++ -g -o table_gen software/software_model.c table_gen_test.cpp table_gen.cpp
 ```
 This will generate a executable `table_gen` in the root directory. It will run the unit tests to check if the table generation code is implemented correctly,
 and it will generate the lookup table and reference encoded output in `data/`.
+
 2. Generate Verilog:
 Run `sbt` in the root directory, and run `runMain huffman.VerilogMain`. This will generate the Verilog source in the root directory. Copy `Top.v` to `verilog/`. 
+
 3. Run HAMMER workflow;
 The commands and additional configuration files vary depends on the HAMMER configuration. See [HAMMER Docs](https://hammer-vlsi.readthedocs.io/en/latest/index.html) for more information. Generally, you will need to list `Top.v` and `memcell.v` as the file to synthesis, and use `huffman_tb.v` as your testbench. 
