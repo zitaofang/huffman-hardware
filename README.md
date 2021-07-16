@@ -1,6 +1,6 @@
 # Hardware Implementation of Huffman Coding
 
-This is a repository for "Efficient Hardware Implementation for Huffman Coding". 
+This is a repository for "Efficient Hardware Implementation for Huffman Coding". This is a honor thesis project for UC Berkeley EECS' honor degree program. You may find the thesis (not formally published / archived) in the root directoy as `huffman.pdf`. 
 
 This repo is organized as followed:
 
